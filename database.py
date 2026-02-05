@@ -21,8 +21,10 @@ try:
     version = cursor.fetchone()
     print(f"Connected to - {version}")
 
+    cursor.execute("INSERT INTO players (id, codename) VALUES ('2', 'trash can');")
     # Fetch and display data from the table
     cursor.execute("SELECT * FROM players;")
+    conn.commit()
     rows = cursor.fetchall()
     for row in rows:
         print(row)
