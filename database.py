@@ -11,7 +11,7 @@ connection_parameters = {
 }
 
 try:
-    connection = psycopg2.connect(**connection_parameters)
+    conn = psycopg2.connect(**connection_parameters)
     cursor = conn.cursor()
 
     # Execute a query
