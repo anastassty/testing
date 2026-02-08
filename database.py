@@ -44,7 +44,7 @@ def add_player(id, name):
         with conn.cursor() as cursor:
             cursor.execute("INSERT INTO players (id, codename) VALUES (%s, %s);", (id, name))
 
-def show_all_players(id, name):
+def show_all_players():
     with psycopg2.connect(**connection_parameters) as conn:
         with conn.cursor() as cursor:
             cursor.execute("SELECT * FROM players;")
