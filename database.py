@@ -10,7 +10,7 @@ connection_parameters = {
     'port': '5432'
 }
 
-try:
+'''try:
     conn = psycopg2.connect(**connection_parameters)
     cursor = conn.cursor()
 
@@ -37,4 +37,18 @@ finally:
     if cursor:
         cursor.close()
     if conn:
-        conn.close()
+        conn.close()'''
+
+def add_player(id, name):
+    with psycopg2.connect(**connection_parameters) as conn:
+        with conn.cursor() as cursor:
+            cursor.execute("INSERT INTO players (id, codename) VALUES (%s, %s);", (id, name))
+
+def show_all_players(id, name):
+    with psycopg2.connect(**connection_parameters) as conn:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM players;")
+            rows = cursor.fetchall()
+            for row in rows:
+                print(row)
+
